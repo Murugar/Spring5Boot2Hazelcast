@@ -9,18 +9,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 @CacheConfig(cacheNames = "instruments")
-public class MusicService {
+public class ProductService {
 
-    private static Logger log = LoggerFactory.getLogger(MusicService.class);
+    private static Logger log = LoggerFactory.getLogger(ProductService.class);
 
     @CacheEvict(allEntries = true)
     public void clearCache() {
     }
 
-    @Cacheable(condition = "#instrument.equals('trombone')")
-    public String play(String instrument) {
-        log.info("Executing: " + this.getClass().getSimpleName() + ".play(\"" + instrument + "\");");
-        return "paying " + instrument + "!";
+    @Cacheable(condition = "#instrument.equals('product1')")
+    public String sell(String instrument) {
+        log.info("Executing: " + this.getClass().getSimpleName() + ".sell(\"" + instrument + "\");");
+        return "selling " + instrument + "!";
     }
 
 }

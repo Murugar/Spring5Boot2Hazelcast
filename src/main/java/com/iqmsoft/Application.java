@@ -16,7 +16,7 @@ public class Application implements CommandLineRunner {
     private static Logger log = LoggerFactory.getLogger(Application.class);
 
     @Autowired
-    private MusicService musicService;
+    private ProductService productService;
 
     @Autowired
     private CacheManager cacheManager;
@@ -30,17 +30,17 @@ public class Application implements CommandLineRunner {
         log.info("Spring Boot Hazelcast Caching Example Configuration");
         log.info("Using cache manager: " + cacheManager.getClass().getName());
 
-        musicService.clearCache();
+        productService.clearCache();
 
-        play("trombone");
-        play("guitar");
-        play("trombone");
-        play("bass");
-        play("trombone");
+        sell("product1");
+        sell("product2");
+        sell("product3");
+        sell("product4");
+        sell("product5");
     }
 
-    private void play(String instrument) {
-        log.info("Calling: " + MusicService.class.getSimpleName() + ".play(\"" + instrument + "\");");
-        musicService.play(instrument);
+    private void sell(String instrument) {
+        log.info("Calling: " + ProductService.class.getSimpleName() + ".sell(\"" + instrument + "\");");
+        productService.sell(instrument);
     }
 }
